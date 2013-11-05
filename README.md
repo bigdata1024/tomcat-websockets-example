@@ -54,7 +54,16 @@ cd websocket
 
 mvn clean package -U 
 
+
 ```
+
+### How to Deploy the Project ###
+
+Once the project has been compiled, copy the war file from the target folder to the $CATALINA_HOME/webapps folder
+
+Restart Tomcat 
+
+The Websockets application should now be available, if all is well.
 
 ### To Edit the Project Using Eclipse ####
 
