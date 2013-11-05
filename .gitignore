@@ -1,8 +1,10 @@
 
 # Compiled Java Classes
 *.class
+src/main/resources/webapp/WEB-INF/classes
 
 # Package Files #
+target
 *.jar
 *.war
 *.ear
