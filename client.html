@@ -6,8 +6,7 @@
   <body>
 
   <form>
-    <textarea id="message" rows="10" cols="10"></textarea>
-    <br/><br/>
+    <input type="text" id="message" value=""/>
     <input type="button" value="Send Message" onclick="sendMessage()" />
   </form>
   <script type="text/javascript">
@@ -16,8 +15,7 @@
 
   function init() {
 
-      var target = "ws://localhost:8080/django/websocket/echoAnnotation" ;
-    //var target = "ws://localhost:8080/examples/websocket/echoAnnotation";
+    var target = "ws://localhost:8080/django/websocket/echoAnnotation" ;
 
     ws = new WebSocket(target);
 
@@ -49,6 +47,11 @@
   }
 
   window.addEventListener("load", init, false);
+
+  function closeConnection()
+  {
+    ws.close();
+  }
   </script>
   </body>
 </html>

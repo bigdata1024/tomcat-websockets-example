@@ -43,7 +43,7 @@ public class EchoAnnotation {
     @OnMessage
     public void echoTextMessage(Session session, String msg, boolean last) {
 
-      log.info("Incoming Message in echoTextMessage()");
+      log.info("Incoming Message in echoTextMessage() using Session ID " + session.getId());
 
         try {
             if (session.isOpen()) {
@@ -62,7 +62,7 @@ public class EchoAnnotation {
     public void echoBinaryMessage(Session session, ByteBuffer bb,
             boolean last) {
 
-      log.info("Incoming Message in echoBinaryMessage()");
+      log.info("Incoming Message in echoBinaryMessage() using Session ID " + session.getId());
         try {
             if (session.isOpen()) {
                 session.getBasicRemote().sendBinary(bb, last);
@@ -83,6 +83,6 @@ public class EchoAnnotation {
      */
     @OnMessage
     public void echoPongMessage(PongMessage pm) {
-        // NO-OP
+        log.info("Pong Message: " + pm.getApplicationData().toString());
     }
 }
