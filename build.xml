@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<project xmlns:artifact="antlib:org.apache.maven.artifact.ant" name="Websocket Service for Tomcat 7" basedir="." default="clean">
+  <property name="generated-sources" location="src/main/generated-source"/>
+  <property name="target-folder" location="target"/>
+  <property name="meta-info" location="src/main/resources/webapp/META-INF/"/>
+  <property name="library-folder" location="src/main/resources/webapp/WEB-INF/lib"/>
+  <property name="classes-folder" location="src/main/resources/webapp/WEB-INF/classes"/>
+  <target name="clean" description="Removes the build (target) directory and generated sources from the file system">
+    <delete dir="${generated-sources}"/>
+    <delete dir="${target-folder}"/>
+    <delete dir="${library-folder}"/>
+    <delete dir="${meta-info}"/>
+    <delete dir="${classes-folder}"/>
+  </target>
+</project>

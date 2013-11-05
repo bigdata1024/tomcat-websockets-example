@@ -1,6 +1,13 @@
+
+# Compiled Java Classes
 *.class
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
+# Project Specific Settings
+.classpath
+.project
+.settings

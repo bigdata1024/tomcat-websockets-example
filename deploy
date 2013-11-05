@@ -1,0 +1,20 @@
+#!/bin/bash
+
+ITEMS_TO_BE_DELETED="/usr/local/tomcat7/webapps/djang*"
+
+SOURCE_WAR="target/django.war"
+
+DESTINATION_WAR="/usr/local/tomcat7/webapps/"
+
+LOG_FILES="/usr/local/tomcat7/logs/*"
+
+rm -fR $ITEMS_TO_BE_DELETED
+
+cp -p $SOURCE_WAR $DESTINATION_WAR
+
+/etc/init.d/tomcat7 stop
+
+rm -f $LOG_FILES
+
+/etc/init.d/tomcat7 start
+

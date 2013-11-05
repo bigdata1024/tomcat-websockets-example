@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Websocket Client Example</title>
+  </head>
+  <body>
+
+  <form>
+    <textarea id="message" rows="10" cols="10"></textarea>
+    <br/><br/>
+    <input type="button" value="Send Message" onclick="sendMessage()" />
+  </form>
+  <script type="text/javascript">
+
+  var ws = null;
+
+  function init() {
+
+      var target = "ws://localhost:8080/websocket-service/django/echoAnnotation" ;
+    //var target = "ws://localhost:8080/examples/websocket/echoAnnotation";
+
+    ws = new WebSocket(target);
+
+    ws.onopen = function() {
+      console.log("Connection opened with " + target);
+    };
+
+    ws.onmessage = function(event) {
+      console.log("Receiving data: " + event.data);
+    };
+
+    ws.onclose = function() {
+      console.log('connection closed with remote endpoint ' + target);
+    };
+
+    ws.onerror = function(event) {
+        console.log('an error has occurred');
+    };
+  }
+
+  function sendMessage() {
+
+    var message = document.getElementById('message');
+    var messageContents = message.value;
+
+    console.log("Sending message: " + messageContents);
+
+    ws.send(messageContents);
+  }
+
+  window.addEventListener("load", init, false);
+  </script>
+  </body>
+</html>
