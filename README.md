@@ -29,6 +29,16 @@ Sample HTML, CSS and Javascript code is available here
 http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/webapps/examples/websocket/
 
 
+### Supported Browsers ###
+
+The following browsers support the latest specification (RFC 6455) of the WebSocket protocol.
+
+* Google Chrome 16 or later (PC, Mobile)
+* Mozilla Firefox 11 or later (PC, Mobile)
+* Apple Safari 6 or later (Mac, IOS)
+* Microsoft Internet Explorer 10 or later
+* Opera 12.10 or later (PC, Mobile)
+
 ### How to Checkout this Project ###
 
 
@@ -52,7 +62,7 @@ You will need Apache ANT 1.8 or later with Apache Maven 3.0 or later.
 # Change the current working directory to the project folder
 cd websocket
 
-mvn clean package -U 
+mvn clean package -U
 
 
 ```
@@ -61,7 +71,7 @@ mvn clean package -U
 
 Once the project has been compiled, copy the war file from the target folder to the $CATALINA_HOME/webapps folder
 
-Restart Tomcat 
+Restart Tomcat
 
 The Websockets application should now be available, if all is well.
 
