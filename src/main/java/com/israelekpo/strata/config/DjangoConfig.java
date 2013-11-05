@@ -1,4 +1,4 @@
-package websocket;
+package com.israelekpo.strata.config;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +9,7 @@ import javax.websocket.server.ServerEndpointConfig;
 
 import org.apache.log4j.Logger;
 
-import com.israelekpo.strata.EchoEndpoint;
+import com.israelekpo.strata.endpoints.EchoEndpoint;
 
 public class DjangoConfig implements ServerApplicationConfig {
 
@@ -37,9 +37,8 @@ public class DjangoConfig implements ServerApplicationConfig {
 
   @Override
   public Set<Class<?>> getAnnotatedEndpointClasses(Set<Class<?>> scanned) {
-      // Deploy all WebSocket endpoints defined by annotations in the examples
-      // web application. Filter out all others to avoid issues when running
-      // tests on Gump
+
+    // Deploy all WebSocket endpoints defined by annotations
       Set<Class<?>> results = new HashSet<Class<?>>();
 
       log.info("Loading Annotated Endpoints");

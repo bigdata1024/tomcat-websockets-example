@@ -1,4 +1,4 @@
-package com.israelekpo.strata;
+package com.israelekpo.strata.endpoints;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -18,15 +18,21 @@ public class EchoAnnotation {
 
   private static final Logger log = Logger.getLogger(EchoAnnotation.class);
 
+  private Session session = null;
+
    public EchoAnnotation() {
 
      log.info("Creating Instance of " + EchoAnnotation.class.getName());
+
+     log.info("Instantiation EchoAnnotation for thread id " + Thread.currentThread().getId());
    }
 
     @OnClose
     public void closer() {
 
-      log.info("Closing Connections with Websocket");
+      log.info("Closing Connection with Websocket for session id " + session.getId());
+
+      log.info("Closing Connection for thread id " + Thread.currentThread().getId());
     }
 
     @OnError
@@ -38,14 +44,20 @@ public class EchoAnnotation {
     public void opener(Session session) {
 
       log.info("Incoming Connection "  + session.getId());
+
+      log.info("Opening Connection for thread id " + Thread.currentThread().getId());
+
+      this.session = session;
     }
 
     @OnMessage
     public void echoTextMessage(Session session, String msg, boolean last) {
 
-      log.info("Incoming Message in echoTextMessage() using Session ID " + session.getId());
+      log.info("Incoming Message in echoTextMessage() using this.session " + this.session.getId() + " and session id " + session.getId());
 
         try {
+
+          log.info("Processing Plain Text Message for thread id " + Thread.currentThread().getId());
             if (session.isOpen()) {
                 session.getBasicRemote().sendText(msg, last);
             }
@@ -63,7 +75,10 @@ public class EchoAnnotation {
             boolean last) {
 
       log.info("Incoming Message in echoBinaryMessage() using Session ID " + session.getId());
+
         try {
+
+          log.info("Processing Binary Message for thread id " + Thread.currentThread().getId());
             if (session.isOpen()) {
                 session.getBasicRemote().sendBinary(bb, last);
             }
@@ -83,6 +98,9 @@ public class EchoAnnotation {
      */
     @OnMessage
     public void echoPongMessage(PongMessage pm) {
-        log.info("Pong Message: " + pm.getApplicationData().toString());
+
+      log.info("Pong Message: " + pm.getApplicationData().toString());
+
+      log.info("Pong Message for thread id " + Thread.currentThread().getId());
     }
 }

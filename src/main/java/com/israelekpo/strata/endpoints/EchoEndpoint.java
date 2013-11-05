@@ -1,4 +1,4 @@
-package com.israelekpo.strata;
+package com.israelekpo.strata.endpoints;
 
 import java.io.IOException;
 
