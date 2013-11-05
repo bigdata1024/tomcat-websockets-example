@@ -36,7 +36,8 @@ Clone the GIT project
 
 ```shell
 
-$ git clone 
+
+$ git clone https://github.com/bigdata1024/tomcat-websockets-example.git tomcat-websockets-example
 
 
 ```
@@ -48,6 +49,9 @@ You will need Apache ANT 1.8 or later with Apache Maven 3.0 or later.
 
 ```shell
 
+# Change the current working directory to the project folder
+cd tomcat-websockets-example
+
 mvn clean package -U 
 
 ```
@@ -58,6 +62,9 @@ You can generate the eclipse project for import into Eclipse by running the foll
 
 
 ```shell
+
+# Navigate into the Project Directory
+cd tomcat-websockets-example
 
 # Optional
 $ ant clean
