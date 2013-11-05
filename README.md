@@ -93,4 +93,19 @@ $ mvn eclipse:clean eclipse:eclipse -DdownloadSources=true
 
 ```
 
+### References for Websocket Annotations ###
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/OnOpen.html
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/OnMessage.html
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/OnClose.html
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/Endpoint.html#onClose(javax.websocket.Session, javax.websocket.CloseReason)
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/OnError.html
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/server/PathParam.html
+
+
+https://javaee-spec.java.net/nonav/javadocs/javax/websocket/server/ServerEndpoint.html
+
+
+
+
+
 

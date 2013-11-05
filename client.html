@@ -15,7 +15,9 @@
 
   function init() {
 
-    var target = "ws://localhost:8080/django/websocket/echoAnnotation" ;
+    var target = null;
+    target = "ws://localhost:8080/django/websocket/echoAnnotation";
+    target = "ws://localhost:8080/django/websocket/calculator";
 
     ws = new WebSocket(target);
 

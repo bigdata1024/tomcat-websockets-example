@@ -15,6 +15,25 @@ public class DjangoConfig implements ServerApplicationConfig {
 
   private static final Logger log = Logger.getLogger(DjangoConfig.class);
 
+  private static final String ENDPOINT_PACKAGE_PREFIX = "com.israelekpo.strata.endpoints";
+
+  /**
+   * Used for Filtering Endpoints for Loading
+   *
+   * You can implement your own logic here
+   *
+   * @param clazz
+   * @return
+   */
+  private static boolean isValidEndpint(Class<?> clazz) {
+
+    final String classPackageName = clazz.getPackage().getName();
+
+    log.info("Checking if Package prefix for class " + clazz + " is valid" );
+
+    return classPackageName.startsWith(ENDPOINT_PACKAGE_PREFIX);
+  }
+
   @Override
   public Set<ServerEndpointConfig> getEndpointConfigs(
           Set<Class<? extends Endpoint>> scanned) {
@@ -41,14 +60,13 @@ public class DjangoConfig implements ServerApplicationConfig {
     // Deploy all WebSocket endpoints defined by annotations
       Set<Class<?>> results = new HashSet<Class<?>>();
 
-      log.info("Loading Annotated Endpoints");
+      log.info("Filtering Annotated Endpoints from " + scanned.size() + " scanned matches");
 
       for (Class<?> clazz : scanned) {
-
-        log.info("Loading Annotated Endpoint " + clazz.getName());
-
-        results.add(clazz);
-
+        if (isValidEndpint(clazz)) {
+          log.info("Loading Annotated Endpoint " + clazz.getName());
+          results.add(clazz);
+        }
       }
 
       return results;
